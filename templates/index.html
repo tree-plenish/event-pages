@@ -1,0 +1,118 @@
+{% extends 'base.html' %}
+
+{% block head %}
+<title>{{ event.school }} | Tree-Plenish Events</title>
+<link rel="preconnect" href="https://fonts.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block body %}
+<div id="title">
+    <div class="overImage">
+        <h1>Tree-Plenish.</h1>
+        <h1>Striving for sustainability at {{ event.school }}</h1>
+        <hr />
+        <div>
+            <h4 style="display: inline-block">{{ event.deadline }}</h4>
+            <h4 style="display: inline-block; float: right">{{ event.location }}</h4>
+        </div>
+        <h4 style="text-align: center">
+            Help offset {{ event.school }}'s paper usage by requesting a tree to be planted in your yard
+        </h4>
+        <div style="text-align: center">
+            <a href="{{ event.treeLink }}" class="button" style="display: inline-block">Request a Tree</a>
+            <a href="{{ event.volunteerLink }}" class="button" style="display: inline-block">Volunteer</a>
+        </div>
+    </div>
+
+</div>
+
+<div id="goalMsg">
+    <h1>Our Goals</h1>
+    <hr />
+    <h4>Tree-Duce, Tree-Use, Tree-Cycle</h4>
+    <p>{{ event.goalMsg }}</p>
+</div>
+
+<div id="supportOurMission">
+    <div class="overImage">
+        <h1>Support Our Mission</h1>
+        <hr />
+        <h4>Want a Tree?</h4>
+        <p>Help us reach our goal</p>
+    </div>
+    
+</div>
+
+<div id="team">
+    <h1>Meet The Team</h1>
+    {% for person in event.team %}
+        <div class="card">
+            <div class="circleCropper">
+                <img src="{{ person.image }}" class="profileImg {{ person.imageOrientation }}" alt="{{ person.name }}">
+            </div>
+            <div class="container">
+                <h2>{{ person.name }}</h2>
+                <p>{{ person.role }}</p>
+                <p>{{ person.bio }}</p> 
+                <p>{{ person.email }}</p>                   
+            </div>
+            
+        </div>
+    {% endfor %}
+</div>
+
+<div id="goalMetrics">
+    <h1>Our Goal</h1>
+    <hr />
+    <table>
+        <tr>
+            <td>
+                <h1>{{ event.treeGoal }}</h1>
+                
+            </td>
+            <td>
+                <h1 style="display: inline">{{ event.paperGoal }}</h1><h3 style="display: inline"> million</h3>
+                
+            </td>
+        </tr>
+        <tr>
+            <td><p>Trees</p></td>
+            <td><p>Sheets of Paper Replaced</p></td>
+        </tr>
+    </table>
+</div>
+
+
+<div id="trees"> 
+    <h1>Our {{ event.trees|length }} Trees:</h1>
+    {% for tree in event.trees %}
+        <div class="card">
+            
+            <img src="{{ tree.image }}" class="treeImg" alt="{{ tree.name }}">
+            <div class="container">
+                <h2>{{ tree.name }}</h2>
+                <a href="{{ tree.link }}" class="button">Learn More</a>
+                <p>{{ tree.description }}</p>                    
+            </div>
+            
+        </div>
+    {% endfor %}
+</div>
+
+<div id="workSupport">
+    <div class="overImage">
+        <div>
+            <h1>Work With Tree-Plenish!</h1>
+        </div>
+        <div>
+            <h1>Support Tree-Plenish!</h1>
+        </div>
+    </div>
+
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+{% endblock %}

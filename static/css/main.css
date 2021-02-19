@@ -1,0 +1,169 @@
+body{
+    margin: 0px;
+    font-family: 'Montserrat', Arial,Helvetica,sans-serif;
+    position: relative;
+}
+a{
+    text-decoration: none;
+}
+
+#topnav ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #016d30;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+    color: white;
+}
+#topnav ul li{
+    display: inline;
+    float: left;
+    padding: 20px;
+}
+#topnav-title{
+    background-color: #80ba52;
+    font-weight: bold;
+}
+#topnav ul li a:link, a:active, a:hover, a:visited{
+    color: white;
+}
+#main{
+    text-align: center;
+}
+
+#title{
+    background-image: url("../images/planting.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    /* backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); */
+    font-size: 2vw;
+}
+hr{
+    border: 0;
+    border-top: 1px solid white;
+}
+
+#goalMsg{
+    background-color: #80ba52;
+    padding: 10%;
+    text-align: left;
+    color: white;
+}
+
+.button{
+    transition: 0.5s;
+    padding: 10px 20px;
+    border: none;
+    background-color: #80ba52;
+    color: white;
+    display: block;
+    font-size: 2vw;
+    padding: 2% 4%;
+    margin: 4%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: #80ba52;
+}
+.button:hover{
+    background-color: rgba(0,0,0,0);
+    border-color: white;
+    
+}
+
+#footer{
+    background-color: #016d30;
+    padding: 30px;
+    position: relative;
+    bottom: 0;
+    height: 100px;
+    margin: 0;
+}
+.circleCropper{
+    width: 200px;
+    height: 200px;
+    /* position: relative; */
+    overflow: hidden;
+    border-radius: 50%;
+    margin: auto;
+}
+.landscape{
+    height: 100%;
+    width: auto;
+}
+.portrait{
+    height: auto;
+    width: 100%;
+}
+.profileImg{
+    display: inline;
+    margin: 0 auto;
+    
+}
+.treeImg{
+    width: 100%;
+    border-radius: 6px 6px 0 0;
+}
+.card{
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin: 10px;
+    width: 250px;
+    border-radius: 6px;
+    display: inline-block;
+    
+}
+.card:hover {
+    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+.container {
+    padding: 2px 16px;
+}
+#supportOurMission{
+    background-image: url("../images/forest.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    font-size: 2vw;
+    
+}
+.overImage{
+    background-color: rgba(0,0,0,0.22);
+    color: white;
+    padding: 100px 20%;
+    text-align: left;
+}
+#goalMetrics{
+    background-color: #80ba52;
+    padding: 10% 5%;
+    text-align: left;
+    color: white;
+}
+#goalMetrics table{
+    font-size: 5vw;
+    margin: 3% auto;
+    width: 90%;
+}
+#goalMetrics table td{
+    width: 50%;
+}
+#goalMetrics p, h1{
+    padding: 0;
+    margin: 0;
+}
+#goalMetrics p{
+    font-size: 2vw;
+}
+#workSupport{
+    background-image: url(../images/leaves.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    
+    font-size: 2vw;
+}
