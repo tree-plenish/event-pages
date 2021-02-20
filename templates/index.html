@@ -44,22 +44,28 @@
     
 </div>
 
-<div id="team">
-    <h1>Meet The Team</h1>
-    {% for person in event.team %}
-        <div class="card">
-            <div class="circleCropper">
-                <img src="{{ person.image }}" class="profileImg {{ person.imageOrientation }}" alt="{{ person.name }}">
+<div>
+    <h1 class="divHead">Meet The Team</h1>
+    <div class="centered">
+        <div class="cards">
+            {% for person in event.team %}
+                <div class="card">
+                    <div class="circleCropper">
+                        <img src="{{ person.image }}" class="profileImg {{ person.imageOrientation }}" alt="{{ person.name }}">
+                    </div>
+                    <div class="container">
+                        <h2>{{ person.name }}</h2>
+                        <p>{{ person.role }}</p>
+                        <p>{{ person.bio }}</p> 
+                        <p>{{ person.email }}</p>                   
+                    </div>
+                    
+                </div>
+            {% endfor %}
             </div>
-            <div class="container">
-                <h2>{{ person.name }}</h2>
-                <p>{{ person.role }}</p>
-                <p>{{ person.bio }}</p> 
-                <p>{{ person.email }}</p>                   
-            </div>
-            
-        </div>
-    {% endfor %}
+    </div>
+
+
 </div>
 
 <div id="goalMetrics">
@@ -84,20 +90,24 @@
 </div>
 
 
-<div id="trees"> 
-    <h1>Our {{ event.trees|length }} Trees:</h1>
-    {% for tree in event.trees %}
-        <div class="card">
-            
-            <img src="{{ tree.image }}" class="treeImg" alt="{{ tree.name }}">
-            <div class="container">
-                <h2>{{ tree.name }}</h2>
-                <a href="{{ tree.link }}" class="button">Learn More</a>
-                <p>{{ tree.description }}</p>                    
+<div id="trees">
+    <h1 class="divHead">Our {{ event.trees|length }} Trees</h1>
+    <div  class="cards">
+        
+        {% for tree in event.trees %}
+            <div class="card">
+                
+                <img src="{{ tree.image }}" class="treeImg" alt="{{ tree.name }}">
+                <div class="container">
+                    <h2>{{ tree.name }}</h2>
+                    <a href="{{ tree.link }}" class="button">Learn More</a>
+                    <p>{{ tree.description }}</p>                    
+                </div>
+                
             </div>
-            
-        </div>
-    {% endfor %}
+        {% endfor %}
+    </div> 
+
 </div>
 
 <div id="workSupport">
