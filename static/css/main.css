@@ -66,7 +66,7 @@ hr{
     background-color: #80ba52;
     color: white;
     display: block;
-    font-size: 2vw;
+    font-size: 1em;
     padding: 2% 4%;
     margin: 4%;
     border-width: 1px;
@@ -155,32 +155,26 @@ hr{
 }
 #goalMetrics{
     background-color: #80ba52;
-    padding: 10% 5%;
+    padding: 8% 10%;
     text-align: left;
     color: white;
 }
-#goalMetrics table{
-    font-size: 5vw;
-    margin: 3% auto;
-    width: 90%;
-}
-#goalMetrics table td{
-    width: 50%;
+#goalMetrics .split h1{
+    font-size: 6em;
 }
 #goalMetrics p, h1{
     padding: 0;
     margin: 0;
 }
-#goalMetrics p{
-    font-size: 2vw;
+#goalMetrics p, h3{
+    font-size: 1.5em;
 }
 #workSupport{
     background-image: url(../images/leaves.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    
-    font-size: 2vw;
+    color: white;
 }
 .divHead{
     margin-top: 5%;
@@ -248,5 +242,23 @@ hr{
 @media screen and (min-width: 70em) {
     .centered {
         max-width: 70em;
+    }
+}
+.split{
+    display: flex;
+    flex-wrap: wrap;
+}
+.half{
+    flex: 1 0 100%; /*size on small screens*/
+    box-sizing: border-box;
+    padding: 8%;
+    font-size: 1.3em;
+}
+/*2 cards*/
+@media screen and (min-width: 850px) {
+    .half {
+       max-width: 50%;
+       font-size: 1.5vw;
+       padding: 5%
     }
 }

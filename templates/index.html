@@ -71,7 +71,7 @@
 <div id="goalMetrics">
     <h1>Our Goal</h1>
     <hr />
-    <table>
+    <!-- <table>
         <tr>
             <td>
                 <h1>{{ event.treeGoal }}</h1>
@@ -84,7 +84,17 @@
             <td><p>Trees</p></td>
             <td><p>Sheets of Paper Replaced</p></td>
         </tr>
-    </table>
+    </table> -->
+    <div class="split">
+        <div class="half">
+            <h1>{{ event.treeGoal }}</h1>
+            <p>Trees</p>
+        </div>
+        <div class="half">
+            <h1 style="display: inline">{{ event.paperGoal }}</h1><h3 style="display: inline"> million</h3>
+            <p>Sheets of Paper Replaced</p>
+        </div>
+    </div>
 </div>
 
 
@@ -106,12 +116,16 @@
 </div>
 
 <div id="workSupport">
-    <div class="overImage">
-        <div>
-            <h1>Work With Tree-Plenish!</h1>
+    <div class="split">
+        <div class="half" style="background-color: rgba(54, 83, 79, 0.678);">
+            <h2>Work With Tree-Plenish!</h2>
+            <p>Fill out this interest form if you are interested in hosting an event at your school next year!</p>
+            <a href="https://www.tree-plenish.org/host" class="button">Host an Event</a>
         </div>
-        <div>
-            <h1>Support Tree-Plenish!</h1>
+        <div class="half"style="background-color: rgba(0,0,0,0.4);">
+            <h2>Support Tree-Plenish!</h2>
+            <p>Help Tree-Plenish build sustainable communities across the country!</p>
+            <a href="https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=M5FN5Q844DAKU&source=url" class="button">Donate!</a>
         </div>
     </div>
 
