@@ -44,6 +44,7 @@ a{
     /* backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px); */
     font-size: 2vw;
+    text-align: left;
 }
 hr{
     border: 0;
@@ -80,12 +81,17 @@ hr{
 }
 
 #footer{
+    text-align: center;
     background-color: #016d30;
-    padding: 30px;
+    padding: 40px;
     position: relative;
     bottom: 0;
-    height: 100px;
+    /* height: 100px; */
     margin: 0;
+    color:#80ba52;
+}
+#footer h1{
+    color: white;
 }
 .circleCropper{
     width: 200px;
@@ -143,15 +149,21 @@ hr{
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
-    
-    font-size: 2vw;
-    
+    text-align: center;
+    /* font-size: 2vw; */
+    line-height: 2em;    
+}
+#supportOurMission p, #supportOurMission h1,#supportOurMission h3{
+    text-align: left;
+}
+#supportOurMission .button{
+    display: inline-block;
 }
 .overImage{
     background-color: rgba(0,0,0,0.22);
     color: white;
     padding: 100px 20%;
-    text-align: left;
+    
 }
 #goalMetrics{
     background-color: #80ba52;
@@ -230,7 +242,7 @@ hr{
 /*3 cards*/
 @media screen and (min-width: 68em) {
     .card {
-        max-width: calc(33% - 1em);
+        max-width: calc(34% - 1em);
     }
 }
 

@@ -30,7 +30,7 @@
 <div id="goalMsg">
     <h1>Our Goals</h1>
     <hr />
-    <h4>Tree-Duce, Tree-Use, Tree-Cycle</h4>
+    <h3>Tree-Duce, Tree-Use, Tree-Cycle</h3>
     <p>{{ event.goalMsg }}</p>
 </div>
 
@@ -38,14 +38,21 @@
     <div class="overImage">
         <h1>Support Our Mission</h1>
         <hr />
-        <h4>Want a Tree?</h4>
-        <p>Help us reach our goal</p>
+        <h3>Want a Tree?</h3>
+        <p>
+            Help us reach our goal of planting {{ event.treeGoal }} trees by opting to receive a tree in your 
+            yard! Choose the type of tree you want and volunteers will come to your yard on 
+            {{ event.deadline }} to plant them. Trees are {{ "${:,.2f}".format(event.treePrice) }} and will 
+            come as saplings ({{ event.saplingHeight }}).
+        </p>
+        <a href="{{ event.treeLink }}" class="button">Sign up to Request a Tree</a>
     </div>
     
 </div>
 
 <div>
     <h1 class="divHead">Meet The Team</h1>
+    <p>Contact us with any questions!</p>
     <div class="centered">
         <div class="cards">
             {% for person in event.team %}
@@ -71,20 +78,6 @@
 <div id="goalMetrics">
     <h1>Our Goal</h1>
     <hr />
-    <!-- <table>
-        <tr>
-            <td>
-                <h1>{{ event.treeGoal }}</h1>
-            </td>
-            <td>
-                <h1 style="display: inline">{{ event.paperGoal }}</h1><h3 style="display: inline"> million</h3>
-            </td>
-        </tr>
-        <tr>
-            <td><p>Trees</p></td>
-            <td><p>Sheets of Paper Replaced</p></td>
-        </tr>
-    </table> -->
     <div class="split">
         <div class="half">
             <h1>{{ event.treeGoal }}</h1>
