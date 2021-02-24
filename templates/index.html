@@ -9,14 +9,14 @@
 {% block body %}
 <div id="title">
     <div class="overImage">
-        <h1>Tree-Plenish.</h1>
+        <h1 id="mainTitle">Tree-Plenish.</h1>
         <h1>Striving for sustainability at {{ event.school }}</h1>
         <hr />
         <div>
             <h4 style="display: inline-block">{{ event.deadline }}</h4>
             <h4 style="display: inline-block; float: right">{{ event.location }}</h4>
         </div>
-        <h4 style="text-align: center">
+        <h4 style="text-align: center; margin: 5% 10%">
             Help offset {{ event.school }}'s paper usage by requesting a tree to be planted in your yard
         </h4>
         <div style="text-align: center">
@@ -99,7 +99,7 @@
                 <img src="{{ tree.image }}" class="treeImg" alt="{{ tree.name }}">
                 <div class="container">
                     <h2>{{ tree.name }}</h2>
-                    <a href="{{ tree.link }}" class="button">Learn More</a>
+                    <a target="_blank" href="{{ tree.link }}" class="button">Learn More</a>
                     <p>{{ tree.description }}</p>                    
                 </div>
             </div>

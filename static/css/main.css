@@ -1,3 +1,9 @@
+/* 
+To do:
+profile card layout center for < 3 cards
+title div format for small screens
+*/
+
 body{
     margin: 0px;
     font-family: 'Montserrat', Arial,Helvetica,sans-serif;
@@ -20,11 +26,12 @@ a{
     width: 100%;
     box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
     color: white;
+    font-size: 3.5vw;
 }
 #topnav ul li{
     display: inline;
     float: left;
-    padding: 20px;
+    padding: 5%;
 }
 #topnav-title{
     background-color: #80ba52;
@@ -33,18 +40,36 @@ a{
 #topnav ul li a:link, a:active, a:hover, a:visited{
     color: white;
 }
+@media screen and (min-width: 500px) {/*large screens*/
+    #topnav ul {
+        font-size: 1.1em;
+    }
+    #topnav ul li {
+        padding: 20px;
+    }
+}
 #main{
     text-align: center;
 }
 
 #title{
     background-image: url("../images/planting.jpg");
+    background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     /* backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px); */
-    font-size: 2vw;
+    font-size: 0.8em; /*small screens*/
     text-align: left;
+}
+#mainTitle{
+    font-size: 2.5em;
+    padding: 5% 0 2% 0;
+}
+@media screen and (min-width: 660px) {/*large screens*/
+    #title {
+        font-size: 2vw; 
+    }
 }
 hr{
     border: 0;
@@ -53,7 +78,7 @@ hr{
 
 #goalMsg{
     background-color: #80ba52;
-    padding: 10%;
+    padding: 10% 15%;
     text-align: left;
     color: white;
     line-height: 2em;
@@ -145,7 +170,7 @@ hr{
     padding: 2px 16px;
 }
 #supportOurMission{
-    background-image: url("../images/forest.jpg");
+    background-image: url("../images/trees-sky.jpg");
     background-repeat: no-repeat;
     background-size: cover;
     background-attachment: fixed;
@@ -160,9 +185,9 @@ hr{
     display: inline-block;
 }
 .overImage{
-    background-color: rgba(0,0,0,0.22);
+    background-color: rgba(0, 0, 0, 0.404);
     color: white;
-    padding: 100px 20%;
+    padding: 100px 15%;
     
 }
 #goalMetrics{
@@ -239,7 +264,10 @@ hr{
        max-width: calc(50% -  1em);
     }
 }
-/*3 cards*/
+/*3 cards
+
+Need to fix for fewer than 3 team members
+*/ 
 @media screen and (min-width: 68em) {
     .card {
         max-width: calc(34% - 1em);
