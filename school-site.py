@@ -1,4 +1,4 @@
-from flask import Flask, render_template, url_for
+from flask import Flask, render_template, url_for, redirect
 
 # example dictionary of event data for testing
 from testData import eventData
@@ -6,9 +6,10 @@ from testData import eventData
 
 app = Flask(__name__)
 
-# @app.route('/')
-# def index():
-#     return render_template('index.html')
+# redirect to Tree-Plenish site if no school input
+@app.route('/')
+def index():
+    return redirect('https://www.tree-plenish.org/')
 
 @app.route('/<string:schoolName>')
 def schoolPage(schoolName):
