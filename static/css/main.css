@@ -1,8 +1,3 @@
-/* 
-To do:
-profile card layout center for < 3 cards
-title div format for small screens
-*/
 
 body{
     margin: 0px;
@@ -260,16 +255,13 @@ hr{
 }
 /*2 cards*/
 @media screen and (min-width: 45em) {
-    .card {
+    .card .min2 { /*only apply 2 cards per row if min 2 team members*/
        max-width: calc(50% -  1em);
     }
 }
-/*3 cards
-
-Need to fix for fewer than 3 team members
-*/ 
+/*3 cards*/ 
 @media screen and (min-width: 68em) {
-    .card {
+    .card .min3 { /*only apply 3 cards per row if min 3 team members*/
         max-width: calc(34% - 1em);
     }
 }
@@ -284,6 +276,7 @@ Need to fix for fewer than 3 team members
         max-width: 70em;
     }
 }
+/* for two-flexbox layout */
 .split{
     display: flex;
     flex-wrap: wrap;

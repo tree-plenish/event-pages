@@ -56,7 +56,7 @@
     <div class="centered">
         <div class="cards">
             {% for person in event.team %}
-                <div class="card">
+                <div class="card {{'min3' if event.team|length >= 3}} {{'min2' if event.team|length >= 2}}">
                     <div class="circleCropper">
                         <img src="{{ person.image }}" class="profileImg {{ person.imageOrientation }}" alt="{{ person.name }}">
                     </div>
