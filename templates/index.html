@@ -2,8 +2,6 @@
 
 {% block head %}
 <title>{{ event.school }} | Tree-Plenish Events</title>
-<link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Montserrat&display=swap" rel="stylesheet">
 {% endblock %}
 
 {% block body %}
@@ -69,7 +67,7 @@
                     
                 </div>
             {% endfor %}
-            </div>
+        </div>
     </div>
 
 
@@ -99,7 +97,7 @@
                 <img src="{{ tree.image }}" class="treeImg" alt="{{ tree.name }}">
                 <div class="container">
                     <h2>{{ tree.name }}</h2>
-                    <a target="_blank" href="{{ tree.link }}" class="button">Learn More</a>
+                    <a href="{{ tree.link }}" class="button">Learn More</a>
                     <p>{{ tree.description }}</p>                    
                 </div>
             </div>
