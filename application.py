@@ -1,7 +1,8 @@
 from flask import Flask, render_template, url_for, redirect
+import pickle
 
 # example dictionary of event data for testing
-from testData import eventData
+# from testData import eventData
 
 
 # EB looks for an 'application' callable by default.
@@ -15,11 +16,20 @@ def index():
 @application.route('/<string:schoolName>')
 def schoolPage(schoolName):
     # Use schoolName or some other event identifier to get event data from database
-
-    # Then send in eventData as event to webpage
-    return render_template('index.html', event=eventData)
-
-
+    # Try getting school info
+    try:
+        # get school data from dict from pickle file
+        with open('eventDataDict.pkl', 'rb') as handle:
+            eventData = pickle.load(handle)[schoolName]
+        # print(eventData)
+        # Then send in as event to webpage
+        return render_template('index.html', event=eventData, school=schoolName)
+    except: 
+        # redirect to error page if any error with loading data or school not found
+        print('School not found')
+        return render_template('error.html', school=schoolName)
+        
+        
 
 # run the app.
 if __name__ == "__main__":

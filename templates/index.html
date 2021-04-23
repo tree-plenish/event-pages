@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
 
 {% block head %}
-<title>{{ event.school }} | Tree-Plenish Events</title>
+<title>{{ school }} | Tree-Plenish Events</title>
 {% endblock %}
 
 {% block body %}
 <div id="title">
     <div class="overImage">
         <h1 id="mainTitle">Tree-Plenish.</h1>
-        <h1>Striving for sustainability at {{ event.school }}</h1>
+        <h1>Striving for sustainability at {{ school }}</h1>
         <hr />
         <div>
-            <h4 style="display: inline-block">{{ event.deadline }}</h4>
-            <h4 style="display: inline-block; float: right">{{ event.location }}</h4>
+            <h4 style="display: inline-block">{{ event.event_date }}</h4>
+            <h4 style="display: inline-block; float: right">{{ event.state }}</h4>
         </div>
         <h4 style="text-align: center; margin: 5% 10%">
-            Help offset {{ event.school }}'s paper usage by requesting a tree to be planted in your yard
+            Help offset {{ school }}'s paper usage by requesting a tree to be planted in your yard
         </h4>
         <div style="text-align: center">
             <a href="{{ event.treeLink }}" class="button" style="display: inline-block">Request a Tree</a>
@@ -38,9 +38,10 @@
         <hr />
         <h3>Want a Tree?</h3>
         <p>
-            Help us reach our goal of planting {{ event.treeGoal }} trees by opting to receive a tree in your 
+            Help us reach our goal of planting {{ event.tree_goal }} trees by opting to receive a tree in your 
             yard! Choose the type of tree you want and volunteers will come to your yard on 
-            {{ event.deadline }} to plant them. Trees are {{ "${:,.2f}".format(event.treePrice) }} and will 
+            {{ event.event_date }} to plant them. 
+            Trees are {{ event.treePrice }} and will 
             come as saplings ({{ event.saplingHeight }}).
         </p>
         <a href="{{ event.treeLink }}" class="button">Sign up to Request a Tree</a>
@@ -53,13 +54,13 @@
     <p>Contact us with any questions!</p>
     <div class="centered">
         <div class="cards">
-            {% for person in event.team %}
+            {% for person in event.host_names %}
                 <div class="card {{'min3' if event.team|length >= 3}} {{'min2' if event.team|length >= 2}}">
                     <div class="circleCropper">
                         <img src="{{ person.image }}" class="profileImg {{ person.imageOrientation }}" alt="{{ person.name }}">
                     </div>
                     <div class="container">
-                        <h2>{{ person.name }}</h2>
+                        <h2>{{ person }}</h2>
                         <p>{{ person.role }}</p>
                         <p>{{ person.bio }}</p> 
                         <p>{{ person.email }}</p>                   
@@ -78,7 +79,7 @@
     <hr />
     <div class="split">
         <div class="half">
-            <h1>{{ event.treeGoal }}</h1>
+            <h1>{{ event.tree_goal }}</h1>
             <p>Trees</p>
         </div>
         <div class="half">
@@ -90,13 +91,13 @@
 
 
 <div id="trees">
-    <h1 class="divHead">Our {{ event.trees|length }} Trees</h1>
+    <h1 class="divHead">Our {{ event.tree_types|length }} Trees</h1>
     <div  class="stiffCards">
-        {% for tree in event.trees %}
+        {% for tree in event.tree_types %}
             <div class="stiffCard">
-                <img src="{{ tree.image }}" class="treeImg" alt="{{ tree.name }}">
+                <img src="{{ tree.image }}" class="treeImg" alt="{{ tree }}">
                 <div class="container">
-                    <h2>{{ tree.name }}</h2>
+                    <h2>{{ tree }}</h2>
                     <a href="{{ tree.link }}" class="button">Learn More</a>
                     <p>{{ tree.description }}</p>                    
                 </div>

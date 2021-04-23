@@ -1,2 +1,6 @@
 venv
 README.md
+testData.py
+eventData.pkl
+test.py
+dataToPickle.py

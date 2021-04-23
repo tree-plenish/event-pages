@@ -1,2 +1,5 @@
 /venv
 testData.py
+eventData.pkl
+eventDataDict.pkl
+test.py
