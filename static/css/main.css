@@ -11,6 +11,7 @@ a{
 
 
 #topnav ul{
+    z-index:100;
     list-style-type: none;
     margin: 0;
     padding: 0;
@@ -80,6 +81,7 @@ hr{
 }
 
 
+
 .button{
     transition: 0.5s;
     padding: 10px 20px;
@@ -147,6 +149,8 @@ hr{
     padding: 5%;
 }
 .stiffCard{
+    background-color: white;
+    color: black;
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
     transition: 0.3s;
     margin: 10px;
@@ -186,10 +190,14 @@ hr{
     
 }
 #goalMetrics{
-    background-color: #80ba52;
-    padding: 8% 10%;
+    background-image: url("../images/trees-foliage.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    /* background-color: #016d30; */
+    /* padding: 8% 10%; */
     text-align: left;
-    color: white;
+    /* color: white; */
 }
 #goalMetrics .split h1{
     font-size: 6em;
@@ -208,14 +216,29 @@ hr{
     background-attachment: fixed;
     color: white;
 }
+#trees{
+    /* background-color: #016d30; */
+    color: white;
+    padding-bottom:5%;
+    background-color: #2c7a4e;
+background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='88' height='24' viewBox='0 0 88 24'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='autumn' fill='%23016d30' fill-opacity='0.77'%3E%3Cpath d='M10 0l30 15 2 1V2.18A10 10 0 0 0 41.76 0H39.7a8 8 0 0 1 .3 2.18v10.58L14.47 0H10zm31.76 24a10 10 0 0 0-5.29-6.76L4 1 2 0v13.82a10 10 0 0 0 5.53 8.94L10 24h4.47l-6.05-3.02A8 8 0 0 1 4 13.82V3.24l31.58 15.78A8 8 0 0 1 39.7 24h2.06zM78 24l2.47-1.24A10 10 0 0 0 86 13.82V0l-2 1-32.47 16.24A10 10 0 0 0 46.24 24h2.06a8 8 0 0 1 4.12-4.98L84 3.24v10.58a8 8 0 0 1-4.42 7.16L73.53 24H78zm0-24L48 15l-2 1V2.18A10 10 0 0 1 46.24 0h2.06a8 8 0 0 0-.3 2.18v10.58L73.53 0H78z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+#sponsors{
+    background-color: #80ba52;
+    padding: 5% 15%;
+    text-align: left;
+    color: white;
+    line-height: 2em;
+    
+}
 .divHead{
-    margin-top: 5%;
+    padding-top: 5%;
     font-size: 60px;
 }
 /* Flexbox styling for profile cards */
 
 .card {
-	background: white;
+	background-color: white;
 	margin-bottom: 2em;	
 }
 
@@ -224,9 +247,9 @@ hr{
 	text-decoration: none;
 }
 
-.card a:hover {
+/* .card a:hover {
 	box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
-}
+} */
 
 .card-content {
 	padding: 1.4em;
@@ -294,4 +317,17 @@ hr{
        font-size: 1.5vw;
        padding: 5%
     }
+}
+
+.video-container {
+    position: relative;
+    padding-bottom: 56.25%; /* 16:9 */
+    height: 0;
+}
+.video-container iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }

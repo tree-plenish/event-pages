@@ -12,13 +12,13 @@
         <hr />
         <div>
             <h4 style="display: inline-block">{{ event.event_date }}</h4>
-            <h4 style="display: inline-block; float: right">{{ event.state }}</h4>
+            <h4 style="display: inline-block; float: right">{{ event.location }}</h4>
         </div>
-        <h4 style="text-align: center; margin: 5% 10%">
-            Help offset {{ school }}'s paper usage by requesting a tree to be planted in your yard
+        <h4 style="text-align: center; margin: 5% 10%; line-height: 1.5em">
+            Request, gift, or donate a tree by {{ event.order_deadline }} to help offset {{ school }}'s paper usage
         </h4>
         <div style="text-align: center">
-            <a href="{{ event.treeLink }}" class="button" style="display: inline-block">Request a Tree</a>
+            <a href="{{ event.treeLink }}" class="button" style="display: inline-block">Order a Tree</a>
             <a href="{{ event.volunteerLink }}" class="button" style="display: inline-block">Volunteer</a>
         </div>
     </div>
@@ -26,32 +26,66 @@
 </div>
 
 <div id="goalMsg">
-    <h1>Our Goals</h1>
+    <h1>A Message from Our Team . . .</h1>
     <hr />
     <h3>Tree-Duce, Tree-Use, Tree-Cycle</h3>
-    <p>{{ event.goalMsg }}</p>
+    {% if 'www.youtube.com' in event.goalMsg %}
+        <div class="video-container">
+            <iframe 
+                src="https://www.youtube.com/embed/{{ event.goalMsg.split('/watch?v=',1)[1]  }}" 
+                title="YouTube video player" 
+                frameborder="0" 
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                allowfullscreen>
+            </iframe>
+        </div>
+        
+    {% else %}
+        <p>{{ event.goalMsg }}</p>
+    {% endif %}
+    
 </div>
 
-<div id="supportOurMission">
+
+<div id="goalMetrics">
     <div class="overImage">
-        <h1>Support Our Mission</h1>
+        <h1>Our Goal</h1>
         <hr />
-        <h3>Want a Tree?</h3>
-        <p>
-            Help us reach our goal of planting {{ event.tree_goal }} trees by opting to receive a tree in your 
-            yard! Choose the type of tree you want and volunteers will come to your yard on 
-            {{ event.event_date }} to plant them. 
-            Trees are {{ event.treePrice }} and will 
-            come as saplings ({{ event.saplingHeight }}).
-        </p>
-        <a href="{{ event.treeLink }}" class="button">Sign up to Request a Tree</a>
+        <div class="split">
+            <div class="half">
+                <h1>{{ event.tree_goal }}</h1>
+                <p>Trees</p>
+            </div>
+            <div class="half">
+                <h1 style="display: inline">{{ event.paperGoal }}</h1><h3 style="display: inline"> million</h3>
+                <p>Sheets of Paper Replaced</p>
+            </div>
+        </div>
     </div>
     
 </div>
 
+<div id="trees">
+    <h1 class="divHead">Our {{ event.tree_types|length }} Trees</h1>
+    <div  class="stiffCards">
+        {% for tree in event.tree_types %}
+            <div class="stiffCard">
+                <img src="{{ tree.image }}" class="treeImg" alt="{{ tree.name }}">
+                <div class="container">
+                    <h2>{{ tree.name }}</h2>
+                    <a href="{{ tree.link }}" class="button">Learn More</a>
+                    <!-- <p>{{ tree.description }}</p>                     -->
+                </div>
+            </div>
+        {% endfor %}
+    </div> 
+    <h3>Visit the Resources page for more info!</h3>
+</div>
+
+
 <div>
     <h1 class="divHead">Meet The Team</h1>
-    <p>Contact us with any questions!</p>
+    <h3>Contact us with any questions!</h3>
     <div class="centered">
         <div class="cards">
             {% for person in event.host_names %}
@@ -60,7 +94,7 @@
                         <img src="{{ person.image }}" class="profileImg {{ person.imageOrientation }}" alt="{{ person.name }}">
                     </div>
                     <div class="container">
-                        <h2>{{ person }}</h2>
+                        <h2>{{ person.name }}</h2>
                         <p>{{ person.role }}</p>
                         <p>{{ person.bio }}</p> 
                         <p>{{ person.email }}</p>                   
@@ -74,38 +108,36 @@
 
 </div>
 
-<div id="goalMetrics">
-    <h1>Our Goal</h1>
-    <hr />
-    <div class="split">
-        <div class="half">
-            <h1>{{ event.tree_goal }}</h1>
-            <p>Trees</p>
-        </div>
-        <div class="half">
-            <h1 style="display: inline">{{ event.paperGoal }}</h1><h3 style="display: inline"> million</h3>
-            <p>Sheets of Paper Replaced</p>
-        </div>
+<div id="supportOurMission">
+    <div class="overImage">
+        <h1>Support Our Mission</h1>
+        <hr />
+        <h3>Want a Tree?</h3>
+        <p>
+            Help us reach our goal of planting {{ event.tree_goal }} trees by opting to RECEIVE a tree in your 
+            yard, GIFT a tree, or DONATE one! Choose the type of tree you want and volunteers will come to your yard on 
+            {{ event.event_date }} to plant them. 
+            Trees are {{ event.treePrice }} and will 
+            come as saplings ({{ event.saplingHeight }}).
+        </p>
+        <a href="{{ event.treeLink }}" class="button">Sign up to Order a Tree</a>
     </div>
+    
 </div>
 
-
-<div id="trees">
-    <h1 class="divHead">Our {{ event.tree_types|length }} Trees</h1>
-    <div  class="stiffCards">
-        {% for tree in event.tree_types %}
-            <div class="stiffCard">
-                <img src="{{ tree.image }}" class="treeImg" alt="{{ tree }}">
-                <div class="container">
-                    <h2>{{ tree }}</h2>
-                    <a href="{{ tree.link }}" class="button">Learn More</a>
-                    <p>{{ tree.description }}</p>                    
-                </div>
-            </div>
-        {% endfor %}
-    </div> 
-
+{% if event.sponsors %}
+<div id="sponsors">
+    <h1>Our Sponsors</h1>
+    <hr />
+    {% for sponsor in event.sponsors %}
+        <div style="background-color: #80ba52; text-align: center;"class="card {{'min3' if event.team|length >= 3}} {{'min2' if event.team|length >= 2}}">
+            <a href="{{sponsor.link}}"><img src="{{ sponsor.image }}"  alt="{{ sponsor.name }}" style="width:200px"></a>
+            
+        </div>
+    {% endfor %}
 </div>
+{% endif %}
+
 
 <div id="workSupport">
     <div class="split">

@@ -1,9 +1,10 @@
 from flask import Flask, render_template, url_for, redirect
 import pickle
+import datetime
+from dateutil.relativedelta import relativedelta
 
 # example dictionary of event data for testing
-# from testData import eventData
-
+from testData import data
 
 # EB looks for an 'application' callable by default.
 application = Flask(__name__)
@@ -19,12 +20,19 @@ def schoolPage(schoolName):
     # Try getting school info
     try:
         # get school data from dict from pickle file
-        with open('eventDataDict.pkl', 'rb') as handle:
-            eventData = pickle.load(handle)[schoolName]
-        # print(eventData)
+        # with open('eventDataDict.pkl', 'rb') as handle:
+        #     eventData = pickle.load(handle)[schoolName]
+        # Assumes event_date is always stored as '%m/%d/%Y' in database!
+        eventData = data
+        if not 'order_deadline' in eventData:
+            date = datetime.datetime.strptime(eventData['event_date'], '%m/%d/%Y').date()
+            date_minus_month =  date - relativedelta(months=1)
+            eventData['order_deadline'] = date_minus_month.strftime('%B %d, %Y').replace(" 0", " ")
+            eventData['event_date'] = date.strftime('%B %d, %Y').replace(" 0", " ")
         # Then send in as event to webpage
         return render_template('index.html', event=eventData, school=schoolName)
-    except: 
+    except Exception as e:
+        print(e) 
         # redirect to error page if any error with loading data or school not found
         print('School not found')
         return render_template('error.html', school=schoolName)
