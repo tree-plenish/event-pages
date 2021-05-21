@@ -37,8 +37,8 @@ for school in eventData:
             trees[i]["image"] =  "https://drive.google.com/uc?export=view&id=" + treeImages[trees[i]["name"].lower() + ".jpg"]
         except: 
             print("No image for ", trees[i]["name"])
-    print(school)
-    print(eventData[school]["tree_types"])
+    # print(school)
+    # print(eventData[school]["tree_types"])
 
 # dump dictionary into pickle file
 with open('eventDataDict.pkl', 'wb') as handle:
