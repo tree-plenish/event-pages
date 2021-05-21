@@ -12,7 +12,7 @@
         <hr />
         <div>
             <h4 style="display: inline-block">{{ event.event_date }}</h4>
-            <h4 style="display: inline-block; float: right">{{ event.location }}</h4>
+            <h4 style="display: inline-block; float: right">{{ event.state }}</h4>
         </div>
         <h4 style="text-align: center; margin: 5% 10%; line-height: 1.5em">
             Request, gift, or donate a tree by {{ event.order_deadline }} to help offset {{ school }}'s paper usage
@@ -118,7 +118,7 @@
             yard, GIFT a tree, or DONATE one! Choose the type of tree you want and volunteers will come to your yard on 
             {{ event.event_date }} to plant them. 
             Trees are {{ event.treePrice }} and will 
-            come as saplings ({{ event.saplingHeight }}).
+            come as saplings.
         </p>
         <a href="{{ event.treeLink }}" class="button">Sign up to Order a Tree</a>
     </div>
