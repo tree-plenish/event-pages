@@ -28,7 +28,6 @@
 <div id="goalMsg">
     <h1>A Message from Our Team . . .</h1>
     <hr />
-    <h3>Tree-Duce, Tree-Use, Tree-Cycle</h3>
     {% if 'www.youtube.com' in event.goalMsg %}
         <div class="video-container">
             <iframe 
@@ -40,6 +39,10 @@
             </iframe>
         </div>
         
+    {% elif 'drive.google.com' in event.goalMsg %}
+    <div class="video-container">
+        <iframe src="{{ event.goalMsg.replace('view','preview') }}" allowfullscreen></iframe>
+    </div>
     {% else %}
         <p>{{ event.goalMsg }}</p>
     {% endif %}

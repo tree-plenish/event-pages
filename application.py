@@ -4,7 +4,7 @@ import datetime
 from dateutil.relativedelta import relativedelta
 
 # example dictionary of event data for testing
-# from testData import data
+from testData import data
 
 # EB looks for an 'application' callable by default.
 application = Flask(__name__)
@@ -20,12 +20,12 @@ def schoolPage(schoolName):
     # Try getting school info
     try:
         # get school data from dict from pickle file
-        with open('eventDataDict.pkl', 'rb') as handle:
-            eventData = pickle.load(handle)[schoolName]
+        # with open('eventDataDict.pkl', 'rb') as handle:
+        #     eventData = pickle.load(handle)[schoolName]
 
         # Calculate event date - 1 month to get order deadline
         # Assumes event_date is always stored as '%m/%d/%Y' in database!
-        # eventData = data
+        eventData = data
         if not 'order_deadline' in eventData:
             date = datetime.datetime.strptime(eventData['event_date'], '%m/%d/%Y').date()
             date_minus_month =  date - relativedelta(months=1)

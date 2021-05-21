@@ -10,3 +10,4 @@ Automating Individual Event Pages.
     - Tree more info links?
     - Team member pictures, emails, bios, goal message
     - city?
+    - Jinja html template embeds video from youtube video link or google drive video link (when opened in its own tab)
