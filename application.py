@@ -19,19 +19,24 @@ def schoolPage(schoolName):
     # Use schoolName or some other event identifier to get event data from database
     # Try getting school info
     try:
+        
+        if schoolName != "Timber Woods High School" and schoolName != "Timber Woods High School2": # just for demo
+            raise Exception
+            
         # get school data from dict from pickle file
         # with open('eventDataDict.pkl', 'rb') as handle:
         #     eventData = pickle.load(handle)[schoolName]
 
         # Calculate event date - 1 month to get order deadline
         # Assumes event_date is always stored as '%m/%d/%Y' in database!
-        eventData = data
+        eventData = data[schoolName]
         if not 'order_deadline' in eventData:
             date = datetime.datetime.strptime(eventData['event_date'], '%m/%d/%Y').date()
             date_minus_month =  date - relativedelta(months=1)
             eventData['order_deadline'] = date_minus_month.strftime('%B %d, %Y').replace(" 0", " ")
             eventData['event_date'] = date.strftime('%B %d, %Y').replace(" 0", " ")
 
+        schoolName = "Timber Woods High School"
         # Then send in as event to webpage
         return render_template('index.html', event=eventData, school=schoolName)
     except Exception as e:

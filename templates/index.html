@@ -8,14 +8,14 @@
 <div id="title">
     <div class="overImage">
         <h1 id="mainTitle">Tree-Plenish.</h1>
-        <h1>Striving for sustainability at {{ school }}</h1>
+        <h1>Striving for Sustainability at {{ school }}</h1>
         <hr />
         <div>
             <h4 style="display: inline-block">{{ event.event_date }}</h4>
             <h4 style="display: inline-block; float: right">{{ event.state }}</h4>
         </div>
         <h4 style="text-align: center; margin: 5% 10%; line-height: 1.5em">
-            Request, gift, or donate a tree by {{ event.order_deadline }} to help offset {{ school }}'s paper usage
+            Request a tree by {{ event.order_deadline }} to help offset {{ school }}'s paper usage
         </h4>
         <div style="text-align: center">
             <a href="{{ event.treeLink }}" class="button" style="display: inline-block">Order a Tree</a>
@@ -26,7 +26,7 @@
 </div>
 
 <div id="goalMsg">
-    <h1>A Message from Our Team . . .</h1>
+    <h1>A Message from Our Team</h1>
     <hr />
     {% if 'www.youtube.com' in event.goalMsg %}
         <div class="video-container">
@@ -51,7 +51,7 @@
 
 
 <div id="goalMetrics">
-    <div class="overImage">
+    <!-- <div class="overImage"> -->
         <h1>Our Goal</h1>
         <hr />
         <div class="split">
@@ -64,8 +64,60 @@
                 <p>Sheets of Paper Replaced</p>
             </div>
         </div>
-    </div>
+    <!-- </div> -->
     
+</div>
+
+<div id="howToParticipate">
+    <div class="overImage" style="padding: 7% 5%">
+        <h1>How to Participate</h1>
+        <hr />
+
+        <div class="centered">
+            <div class="cards" style="padding: 0">
+                <div class="card min2 min4">
+                    <div class="top">
+                        <h3>Order a Sapling</h3>
+                        <p>
+                            Order a ${{ event.treePrice }} sapling to be planted in your yard by volunteers
+                            on {{ event.event_date }}.
+                        </p>
+                    </div>
+                    <a href="{{ event.treeLink }}" class="button">Order a Tree</a>
+                </div>
+                <div class="card min2">
+                    <div class="top">
+                        <h3>Volunteer</h3>
+                        <p>
+                            Volunteer to plant saplings around your community on {{ event.event_date }}.
+                        </p>
+                    </div>
+                    <a href="{{ event.volunteerLink }}" class="button">Sign Up to Volunteer</a>
+                </div>
+                <div class="card min2">
+                    <div class="top">
+                        <h3>Support</h3>
+                        <p>
+                            Share this event around your community or donate to Tree-Plenish to help future events.
+                        </p>
+                    </div>
+                    <a href="https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=M5FN5Q844DAKU&source=url"
+                        class="button" >Donate to Tree-Plenish</a>
+                </div>
+                {% if event.donateTrees > 0 %}
+                <div class="card min2">
+                    <div class="top">
+                        <h3>Donate a Tree</h3>
+                        <p>
+                            Purchase a tree to be planted somewhere else.
+                        </p>
+                    </div>
+                    <a href="{{ event.volunteerLink }}" class="button">Donate a Tree</a>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
 
 <div id="trees">
@@ -82,17 +134,17 @@
             </div>
         {% endfor %}
     </div> 
-    <h3>Visit the Resources page for more info!</h3>
+    <!-- <h3>Visit the Resources page for more info!</h3> -->
 </div>
 
 
-<div>
+<div id="team">
     <h1 class="divHead">Meet The Team</h1>
     <h3>Contact us with any questions!</h3>
     <div class="centered">
         <div class="cards">
             {% for person in event.host_names %}
-                <div class="card {{'min3' if event.team|length >= 3}} {{'min2' if event.team|length >= 2}}">
+                <div class="card {{'min3' if event.host_names|length >= 3}} {{'min2' if event.host_names|length >= 2}}">
                     <div class="circleCropper">
                         <img src="{{ person.image }}" class="profileImg {{ person.imageOrientation }}" alt="{{ person.name }}">
                     </div>
@@ -109,23 +161,6 @@
     </div>
 
 
-</div>
-
-<div id="supportOurMission">
-    <div class="overImage">
-        <h1>Support Our Mission</h1>
-        <hr />
-        <h3>Want a Tree?</h3>
-        <p>
-            Help us reach our goal of planting {{ event.tree_goal }} trees by opting to RECEIVE a tree in your 
-            yard, GIFT a tree, or DONATE one! Choose the type of tree you want and volunteers will come to your yard on 
-            {{ event.event_date }} to plant them. 
-            Trees are {{ event.treePrice }} and will 
-            come as saplings.
-        </p>
-        <a href="{{ event.treeLink }}" class="button">Sign up to Order a Tree</a>
-    </div>
-    
 </div>
 
 {% if event.sponsors %}

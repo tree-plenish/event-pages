@@ -33,7 +33,7 @@ a{
     background-color: #80ba52;
     font-weight: bold;
 }
-#topnav ul li a:link, a:active, a:hover, a:visited{
+#topnav a:link, a:active, a:hover, a:visited{
     color: white;
 }
 @media screen and (min-width: 500px) {/*large screens*/
@@ -169,20 +169,39 @@ hr{
 }
 .container {
     padding: 2px 16px;
+    flex-grow: 1;
+    padding: 0% 3%;
 }
-#supportOurMission{
+
+@media screen and (min-width: 992px) {
+    #howToParticipate, #goalMetrics, #workSupport {
+        background-attachment: fixed;
+    }
+}
+
+#howToParticipate{
     background-image: url("../images/trees-sky.jpg");
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
     text-align: center;
     /* font-size: 2vw; */
     line-height: 2em;    
 }
-#supportOurMission p, #supportOurMission h1,#supportOurMission h3{
+#howToParticipate p, #howToParticipate h3{
     text-align: left;
 }
-#supportOurMission .button{
+#howToParticipate h1 {
+    font-size: 3em;
+    margin-bottom: 0.8em;
+    line-height: 1.2em;
+}
+#howToParticipate hr {
+    border-color:#80ba52;
+    border-width:1em;
+    width:20%;
+    /* margin: 3%; */
+}
+#howToParticipate .button{
     display: inline-block;
 }
 .overImage{
@@ -192,14 +211,20 @@ hr{
     
 }
 #goalMetrics{
-    background-image: url("../images/trees-foliage.jpg");
+    /* background-image: url("../images/trees-foliage.jpg"); */
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+    background-color: rgb(205,232,198);
+    color: #2c7a4e;
+    padding: 100px 15%;
+    /* background-attachment: fixed; */
     /* background-color: #016d30; */
     /* padding: 8% 10%; */
     text-align: left;
     /* color: white; */
+}
+#goalMetrics h1{
+    font-size: 3em;
 }
 #goalMetrics .split h1{
     font-size: 6em;
@@ -211,11 +236,15 @@ hr{
 #goalMetrics p, h3{
     font-size: 1.5em;
 }
+#goalMetrics hr{
+    border-color: #2c7a4e;
+
+}
 #workSupport{
     background-image: url(../images/leaves.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    background-attachment: fixed;
+    /* background-attachment: fixed; */
     color: white;
 }
 #trees{
@@ -237,39 +266,48 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     padding-top: 5%;
     font-size: 60px;
 }
-/* Flexbox styling for profile cards */
+/* Flexbox styling for profile and how to participate cards */
 
 .card {
-	background-color: white;
-	margin-bottom: 2em;	
+    /* background-color: white; */
+    margin-bottom: 2em; 
+
+    /* For .top to take up as much space as possible*/
+    display: flex;
+    flex-direction: column;
 }
 
 .card a {
-	color: black;
-	text-decoration: none;
+    /* color: black; */
+    text-decoration: none;
 }
 
+.card .top {
+    flex-grow: 1;
+    padding: 0% 3%;
+}
 /* .card a:hover {
-	box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
+    box-shadow: 3px 3px 8px hsl(0, 0%, 80%);
 } */
 
 .card-content {
-	padding: 1.4em;
+    padding: 1.4em;
 }
 
 .card-content h2 {
-	margin-top: 0;
-	margin-bottom: .5em;
-	font-weight: bold;
+    margin-top: 0;
+    margin-bottom: .5em;
+    font-weight: bold;
 }
 
 .card-content p {
-	font-size: 80%;
+    font-size: 80%;
 }
 .cards {
     display: flex;
     flex-wrap: wrap;
     padding: 3% 8%;
+    justify-content: center;
  }
 /*1 card*/
 .card {
@@ -277,16 +315,24 @@ background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/s
     box-sizing: border-box;
     margin: 1rem .25em;
     padding: 0 2%;
+    
+}
+
+/*2 cards how to participate*/
+@media screen and (max-width: 1200px) {
+    #howToParticipate .min2 { 
+       min-width: calc(50% -  1em);
+    }
 }
 /*2 cards*/
 @media screen and (min-width: 45em) {
-    .card .min2 { /*only apply 2 cards per row if min 2 team members*/
+    .min2 { /*only apply 2 cards per row if min 2 team members*/
        max-width: calc(50% -  1em);
     }
 }
 /*3 cards*/ 
 @media screen and (min-width: 68em) {
-    .card .min3 { /*only apply 3 cards per row if min 3 team members*/
+    .min3 { /*only apply 3 cards per row if min 3 team members*/
         max-width: calc(34% - 1em);
     }
 }
