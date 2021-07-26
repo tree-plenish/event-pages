@@ -2,3 +2,4 @@ venv
 README.md
 
 dataToPickle.py
+.DS_Store
