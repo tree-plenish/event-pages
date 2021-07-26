@@ -1,8 +1,4 @@
 venv
 README.md
-eventData.pkl
-test.py
-dataToPickle.py
 
-credentials.json
-token.json
+dataToPickle.py

@@ -1,8 +1,1 @@
-/venv
-eventData.pkl
-eventDataDict.pkl
-
-test-tree-imgs.py
-
-credentials.json
-token.json
+venv
