@@ -1,3 +1,5 @@
+# TODO: check donate tree boolean translating correctly,
+
 import sys
 import importlib
 import pandas as pd
@@ -29,6 +31,9 @@ tpSQL = TpSQL()
 df = pd.merge(tpSQL.getTable('school'), tpSQL.getTable('event'), on="schoolid")
 # print(df)
 
+# CHECK NO SLASHES IN SCHOOL NAME
+df['name'] = df['name'].apply(lambda name: name.replace('/', '-'))
+
 # school names will always be unique?
 eventData = df.set_index('name').T.to_dict()
 
@@ -52,12 +57,15 @@ print(treeImages)
 hostData = tpSQL.getTable('event_hosts')
 # print(hostData)
 for school in eventData:
+
     schoolData = eventData[school]
+    print('price', schoolData['price'])
 
     # Get list of event hosts and add to eventData
     if schoolData['schoolid'] in list(hostData['schoolid']):
-        # print(eventData[school]['schoolid'])
+        # print(school)
         schoolData['hosts'] = hostData.loc[hostData['schoolid'] == schoolData['schoolid']].to_dict('records')
+        # print(schoolData['hosts'])
     
     # Also reorganize tree species (species_one, species_two, etc.) into list of trees
     # print(schoolData['species_one'])
@@ -67,7 +75,7 @@ for school in eventData:
     schoolData['trees'].append({'name': schoolData['species_one']})
     schoolData['trees'].append({'name': schoolData['species_two']})
     schoolData['trees'].append({'name': schoolData['species_three']})
-    # print(schoolData['trees'])
+    print(schoolData['trees'])
   
     # Get image for each tree (if available)
     trees = eventData[school]["trees"]
@@ -76,7 +84,7 @@ for school in eventData:
             trees[i]["image"] =  "https://drive.google.com/uc?export=view&id=" + treeImages[trees[i]["name"].lower() + ".jpg"]
         except: 
             print("No image for", trees[i]["name"], "from school:", school)
-            
+
     # Calculate event date - 1 month to get order deadline
     # Assumes event_date is always stored as '%Y-%m-%d' in database!
     try:
@@ -84,6 +92,7 @@ for school in eventData:
         date_minus_month =  date - relativedelta(months=1)
         eventData[school]['order_deadline'] = date_minus_month.strftime('%B %d, %Y').replace(" 0", " ")
         eventData[school]['date'] = date.strftime('%B %d, %Y').replace(" 0", " ")
+        print("Order deadline success for school:", school)
     except:
         print("Order deadline could not be calculated for date: ", eventData[school]['date'], "from school:", school)
     # print(school)

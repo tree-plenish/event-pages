@@ -16,7 +16,7 @@ def index():
 def schoolPage(schoolName):
     # Use schoolName or some other event identifier to get event data 
     # Try getting school info
-    try:
+    # try:
         
         # if schoolName != "Timber Woods High School" and schoolName != "Timber Woods High School2": # just for demo
         #     raise Exception
@@ -29,11 +29,11 @@ def schoolPage(schoolName):
         # schoolName = "Timber Woods High School"
         # Then send in as event to webpage
         return render_template('index.html', event=eventData, school=schoolName)
-    except Exception as e:
-        print(e) 
-        # redirect to error page if any error with loading data or school not found
-        print('School not found')
-        return render_template('error.html', school=schoolName)
+    # except Exception as e:
+    #     print(e) 
+    #     # redirect to error page if any error with loading data or school not found
+    #     print('School not found')
+    #     return render_template('error.html', school=schoolName)
         
         
 

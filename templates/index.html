@@ -11,7 +11,7 @@
         <h1>Striving for Sustainability at {{ school }}</h1>
         <hr />
         <div>
-            <h4 style="display: inline-block">{{ event.event_date }}</h4>
+            <h4 style="display: inline-block">{{ event.date }}</h4>
             <h4 style="display: inline-block; float: right">{{ event.state }}</h4>
         </div>
         <h4 style="text-align: center; margin: 5% 10%; line-height: 1.5em">
@@ -28,6 +28,7 @@
 <div id="goalMsg">
     <h1>A Message from Our Team</h1>
     <hr />
+    {% if event.media_type == 'video' or  event.media_type == 'text' %}
     {% if event.video %}
         {% if 'www.youtube.com' in event.video %}
             <div class="video-container">
@@ -48,6 +49,7 @@
     {% else %}
         <p>{{ event.text }}</p>
     {% endif %}
+    {% endif %}
     
 </div>
 
@@ -62,7 +64,7 @@
                 <p>Trees</p>
             </div>
             <div class="half">
-                <h1 style="display: inline">{{ event.paperGoal }}</h1><h3 style="display: inline"> million</h3>
+                <h1 style="display: inline">{{ event.tree_goal*0.01 }}</h1><h3 style="display: inline"> million</h3>
                 <p>Sheets of Paper Replaced</p>
             </div>
         </div>
@@ -81,8 +83,8 @@
                     <div class="top">
                         <h3>Order a Sapling</h3>
                         <p>
-                            Order a ${{ event.treePrice }} sapling to be planted in your yard by volunteers
-                            on {{ event.event_date }}.
+                            Order a ${{ event.price }} sapling to be planted in your yard by volunteers
+                            on {{ event.date }}.
                         </p>
                     </div>
                     <a href="{{ event.treeLink }}" class="button">Order a Tree</a>
@@ -91,7 +93,7 @@
                     <div class="top">
                         <h3>Volunteer</h3>
                         <p>
-                            Volunteer to plant saplings around your community on {{ event.event_date }}.
+                            Volunteer to plant saplings around your community on {{ event.date }}.
                         </p>
                     </div>
                     <a href="{{ event.volunteerLink }}" class="button">Sign Up to Volunteer</a>
@@ -114,7 +116,7 @@
                             Purchase a tree to be planted somewhere else.
                         </p>
                     </div>
-                    <a href="{{ event.volunteerLink }}" class="button">Donate a Tree</a>
+                    <a href="{{ event.donate_link }}" class="button">Donate a Tree</a>
                 </div>
                 {% endif %}
             </div>
@@ -147,15 +149,15 @@
     <h3>Contact us with any questions!</h3>
     <div class="centered">
         <div class="cards">
-            {% for person in event.host_names %}
+            {% for person in event.hosts %}
                 <div class="card {{'min3' if event.host_names|length >= 3}} {{'min2' if event.host_names|length >= 2}}">
                     <div class="circleCropper">
                         <img src="{{ person.image }}" class="profileImg {{ person.imageOrientation }}" alt="{{ person.name }}">
                     </div>
                     <div class="container">
                         <h2>{{ person.name }}</h2>
-                        <p>{{ person.role }}</p>
                         <p>{{ person.bio }}</p> 
+                        <p>{{ person.phone }}</p>
                         <p>{{ person.email }}</p>                   
                     </div>
                     
