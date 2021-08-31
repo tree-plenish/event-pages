@@ -17,6 +17,6 @@ Automating Individual Event Pages.
     - `/oakland%20tech-east%20bay` (missing event date and tree goals, but has tree species, multiple hosts, text message)
     - `/deerfield` or `/norwood` or `/paramus` (has event date, tree goals)
 - Need to test: 
-    - sponsor (need to add to data dict)
+    - sponsor (should already work, just don't have test data yet (empty school_sponsor table))
     - price, donate=false (should already work, just don't have test data yet)
-    - volunteer link, tree purchase link, tree info links (missing from database)
+    - volunteer link, tree purchase link, sponsor link, tree info links (missing from database)

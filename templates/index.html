@@ -175,7 +175,7 @@
     <hr />
     {% for sponsor in event.sponsors %}
         <div style="background-color: #80ba52; text-align: center;"class="card {{'min3' if event.team|length >= 3}} {{'min2' if event.team|length >= 2}}">
-            <a href="{{sponsor.link}}"><img src="{{ sponsor.image }}"  alt="{{ sponsor.name }}" style="width:200px"></a>
+            <a href="{{sponsor.link}}"><img src="{{ sponsor.logo }}"  alt="{{ sponsor.name }}" style="width:200px"></a>
             
         </div>
     {% endfor %}

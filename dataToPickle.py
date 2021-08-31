@@ -1,5 +1,3 @@
-# TODO: check donate tree boolean translating correctly,
-
 import sys
 import importlib
 import pandas as pd
@@ -55,17 +53,25 @@ print(treeImages)
 
 
 hostData = tpSQL.getTable('event_hosts')
+schoolSponsorData = tpSQL.getTable('school_sponsor')
+sponsorData = tpSQL.getTable('sponsor')
 # print(hostData)
 for school in eventData:
 
     schoolData = eventData[school]
-    print('price', schoolData['price'])
 
     # Get list of event hosts and add to eventData
     if schoolData['schoolid'] in list(hostData['schoolid']):
         # print(school)
         schoolData['hosts'] = hostData.loc[hostData['schoolid'] == schoolData['schoolid']].to_dict('records')
         # print(schoolData['hosts'])
+
+    # Get list of sponsors and add to eventData
+    if schoolData['schoolid'] in list(schoolSponsorData['schoolid']):
+        schoolData['sponsors'] = []
+        sponsorIds = list(schoolSponsorData.loc[schoolSponsorData['schoolid'] == schoolData['schoolid']]['sponsorid'])
+        for sponsorId in sponsorIds:
+            schoolData['sponsors'].append(sponsorData.loc[sponsorData['sponsorid'] == sponsorId].to_dict('records'))
     
     # Also reorganize tree species (species_one, species_two, etc.) into list of trees
     # print(schoolData['species_one'])
@@ -75,7 +81,7 @@ for school in eventData:
     schoolData['trees'].append({'name': schoolData['species_one']})
     schoolData['trees'].append({'name': schoolData['species_two']})
     schoolData['trees'].append({'name': schoolData['species_three']})
-    print(schoolData['trees'])
+    # print(schoolData['trees'])
   
     # Get image for each tree (if available)
     trees = eventData[school]["trees"]
