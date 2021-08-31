@@ -3,3 +3,6 @@ README.md
 
 dataToPickle.py
 .DS_Store
+
+credentials.json
+token.json

@@ -28,23 +28,25 @@
 <div id="goalMsg">
     <h1>A Message from Our Team</h1>
     <hr />
-    {% if 'www.youtube.com' in event.goalMsg %}
+    {% if event.video %}
+        {% if 'www.youtube.com' in event.video %}
+            <div class="video-container">
+                <iframe 
+                    src="https://www.youtube.com/embed/{{ event.video.split('/watch?v=',1)[1]  }}" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+                </iframe>
+            </div>
+            
+        {% elif 'drive.google.com' in event.video %}
         <div class="video-container">
-            <iframe 
-                src="https://www.youtube.com/embed/{{ event.goalMsg.split('/watch?v=',1)[1]  }}" 
-                title="YouTube video player" 
-                frameborder="0" 
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                allowfullscreen>
-            </iframe>
+            <iframe src="{{ event.video.replace('view','preview') }}" allowfullscreen></iframe>
         </div>
-        
-    {% elif 'drive.google.com' in event.goalMsg %}
-    <div class="video-container">
-        <iframe src="{{ event.goalMsg.replace('view','preview') }}" allowfullscreen></iframe>
-    </div>
+        {% endif %}
     {% else %}
-        <p>{{ event.goalMsg }}</p>
+        <p>{{ event.text }}</p>
     {% endif %}
     
 </div>
@@ -104,7 +106,7 @@
                     <a href="https://www.paypal.com/donate/?cmd=_s-xclick&hosted_button_id=M5FN5Q844DAKU&source=url"
                         class="button" >Donate to Tree-Plenish</a>
                 </div>
-                {% if event.donateTrees > 0 %}
+                {% if event.donate > 0 %}
                 <div class="card min2">
                     <div class="top">
                         <h3>Donate a Tree</h3>
@@ -121,11 +123,13 @@
 </div>
 
 <div id="trees">
-    <h1 class="divHead">Our {{ event.tree_types|length }} Trees</h1>
+    <h1 class="divHead">Our {{ event.trees|length }} Trees</h1>
     <div  class="stiffCards">
-        {% for tree in event.tree_types %}
+        {% for tree in event.trees %}
             <div class="stiffCard">
+                {% if tree.image %}
                 <img src="{{ tree.image }}" class="treeImg" alt="{{ tree.name }}">
+                {% endif %}
                 <div class="container">
                     <h2>{{ tree.name }}</h2>
                     <a href="{{ tree.link }}" class="button">Learn More</a>
