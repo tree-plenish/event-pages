@@ -13,10 +13,10 @@ Automating Individual Event Pages.
 - TODO: Add tests to run during workflow to prevent deployment if site has problems.
 - ~~Current state of this repo automatically deployed [here](http://test-environment.eba-s4xs6euy.us-east-1.elasticbeanstalk.com/Timber%20Woods%20High%20School)~~ (temporarily terminated environment while site is being connected to test data)
 - Test with school examples from test data:
+    - `/cumberland%20valley` has sponsor example
     - `/carmel` (missing event date and tree goals, but has tree species, one host, youtube video)
     - `/oakland%20tech-east%20bay` (missing event date and tree goals, but has tree species, multiple hosts, text message)
     - `/deerfield` or `/norwood` or `/paramus` (has event date, tree goals)
 - Need to test: 
-    - sponsor (should already work, just don't have test data yet (empty school_sponsor table))
     - price, donate=false (should already work, just don't have test data yet)
-    - volunteer link, tree purchase link, sponsor link, tree info links (missing from database)
+    - volunteer link, tree purchase link, sponsor links, tree info links (should already work, just don't have test data yet)
