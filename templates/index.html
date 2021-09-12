@@ -29,7 +29,7 @@
     <h1>A Message from Our Team</h1>
     <hr />
     {% if event.media_type == 'video' or  event.media_type == 'text' %}
-    {% if event.video %}
+    {% if event.media_type == 'video' and event.video %}
         {% if 'www.youtube.com' in event.video %}
             <div class="video-container">
                 <iframe 
@@ -83,11 +83,11 @@
                     <div class="top">
                         <h3>Order a Sapling</h3>
                         <p>
-                            Order a ${{ event.price }} sapling to be planted in your yard by volunteers
+                            Order a {{ "$%.0f"|format(event.price) }} sapling to be planted in your yard by volunteers
                             on {{ event.date }}.
                         </p>
                     </div>
-                    <a href="{{ event.tree_order_ink }}" class="button">Order a Tree</a>
+                    <a href="{{ event.tree_order_link }}" class="button">Order a Tree</a>
                 </div>
                 <div class="card min2">
                     <div class="top">

@@ -101,6 +101,8 @@ for school in eventData:
     except:
         print("Order deadline could not be calculated for date: ", eventData[school]['date'], "from school:", school)
         pass
+
+    eventData[school]['price'] = float(eventData[school]['price'])
 # dump dictionary into pickle file
 with open('eventDataDict.pkl', 'wb') as handle:
     pickle.dump(eventData, handle, protocol=pickle.HIGHEST_PROTOCOL)
